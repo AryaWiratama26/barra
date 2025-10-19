@@ -45,6 +45,7 @@ print(f"My Model Prediction: {y_pred_my_model}")
 My Model Prediction: [array([83.18814104]), array([27.03208774]), array([27.03208774]), array([69.63323162]), array([59.95115347])]
 ```
 
-[Code](/barra/linreg.py)
+[Code](/barra/linreg.py) <br/>
+[Barra Test and Compare](/barra.ipynb) <br/>
 [See on pdf](/pic/Barra%20-%20Linear%20Regression%20From%20Scratch%20-%20Fix.pdf)
 
