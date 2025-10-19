@@ -8,10 +8,17 @@ a = intercept
 b = slope
 
 """
+
+import numpy as np
+
 class LinearRegression:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def __init__(self):
+        self.x = None
+        self.y = None
+        
+    def fit(self, x, y):
+        self.x = np.array(x)
+        self.y = np.array(y)
     
     def __mean(self, axis_var = "x"):
         
@@ -20,7 +27,7 @@ class LinearRegression:
         elif axis_var == "y":
             loop_var = self.y
         else:
-            raise ValueError("Axis just X dan Y")
+            raise ValueError("just X dan Y")
                 
         temp = 0
         for i in loop_var:
@@ -43,8 +50,8 @@ class LinearRegression:
         if len(self.x) != len(self.y):
             raise ValueError("Lenght X and Y must be equal")
 
-        x_mean = LinearRegression.__mean(self, axis_var= "x")
-        y_mean = LinearRegression.__mean(self, axis_var= "y")
+        x_mean = self.__mean(axis_var= "x")
+        y_mean = self.__mean(axis_var= "y")
         
         up = 0
         down = 0
@@ -63,7 +70,7 @@ class LinearRegression:
         a = y_mean - b*x_mean
         
         """
-        a = LinearRegression.__mean(self, axis_var= "y") - LinearRegression.__find_slope_b(self) * LinearRegression.__mean(self, axis_var= "x")
+        a = self.__mean(axis_var= "y") - self.__find_slope_b() * self.__mean(axis_var= "x")
         return a
     
     def predict(self, pred_var):
@@ -76,12 +83,16 @@ class LinearRegression:
         
         """
         
-        slope = LinearRegression.__find_slope_b(self)
-        intercept = LinearRegression.__find_intercept_a(self)
-
-            
-        Y = intercept + slope * pred_var
+        slope = self.__find_slope_b()
+        intercept = self.__find_intercept_a()
         
-        return Y
+        pred_var = np.array(pred_var)
+
+        Y_pred = []
+        for i in pred_var:
+            Y = intercept + slope * i
+            Y_pred.append(Y)
+        
+        return Y_pred
         
     
