@@ -45,6 +45,61 @@ print(f"My Model Prediction: {y_pred_my_model}")
 My Model Prediction: [array([83.18814104]), array([27.03208774]), array([27.03208774]), array([69.63323162]), array([59.95115347])]
 ```
 
+```python
+r2 = r2_score(y_test, y_pred_my_model)
+mae = mean_absolute_error(y_test, y_pred_my_model)
+mse = mean_squared_error(y_test, y_pred_my_model)
+rmse = np.sqrt(mse)
+
+print("R2:", r2)
+print("MAE:", mae)
+print("MSE:", mse)
+print("RMSE:", rmse)
+```
+
+```bash
+R2: 0.9678055545167994
+MAE: 3.9207511902099226
+MSE: 18.943211722315247
+RMSE: 4.352380006653285
+```
+
+### Sklearn Model
+
+```python
+from sklearn import linear_model
+
+model = linear_model.LinearRegression()
+model.fit(X_train, y_train)
+
+y_pred_sklearn = model.predict(X_test)
+
+print(f"Sklearn Prediciton: {y_pred_sklearn}")
+```
+
+```bash
+Sklearn Prediciton: [83.18814104 27.03208774 27.03208774 69.63323162 59.95115347]
+```
+
+```python
+r2 = r2_score(y_test, y_pred_sklearn)
+mae = mean_absolute_error(y_test, y_pred_sklearn)
+mse = mean_squared_error(y_test, y_pred_sklearn)
+rmse = np.sqrt(mse)
+
+print("R2:", r2)
+print("MAE:", mae)
+print("MSE:", mse)
+print("RMSE:", rmse)
+```
+
+```bash
+R2: 0.9678055545167994
+MAE: 3.9207511902099244
+MSE: 18.943211722315272
+RMSE: 4.352380006653288
+```
+
 [Code](/barra/linreg.py) <br/>
 [Barra Test and Compare](/barra.ipynb) <br/>
 [See on pdf](/pic/Barra%20-%20Linear%20Regression%20From%20Scratch%20-%20Fix.pdf)
